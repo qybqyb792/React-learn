@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>01_Javascript类的定义</title>
+</head>
+
+<body>
+	<script type="text/javascript">
+				// ES5中如何定义类
+				// function Person(name, age) {
+				// 	this.name = name;
+				// 	this.age = age;
+				// }
+
+				// Person.prototype.running = function() {
+				// 	console.log(this.name, this.age);
+				// }
+
+				// var p = new Person("zytqyb", 18);
+				// p.running()
+
+				// ES6中如何定义类
+				class Person {
+					// 构造方法
+					constructor(name, age) {
+						this.name = name
+						this.age = age
+					}
+
+					// 定义方法
+					running() {
+						console.log(this);
+						console.log(this.name, this.age, "running");
+					}
+				}
+
+				const p = new Person("zytqyb", 18);
+				console.log(p);
+				p.running()
+
+				// this绑定的题目
+				let func = p.running;
+				// func() // 这样是可以调用的但是无法输出数据
+
+				var obj = {
+					name: "kobe",
+					age: 40
+				}
+				// func.call(obj)
+
+				// 重新给func赋值
+				func = func.bind(obj)
+				func()
+	</script>
+</body>
+
+</html>
