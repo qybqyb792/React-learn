@@ -1,45 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>01_案例练习-电影列表</title>
 </head>
+
 <body>
-  
   <div id="app"></div>
 
   <!-- 1.引入依赖 -->
-  <script src="../react/react.development.js"></script>
-  <script src="../react/react-dom.development.js"></script>
-  <script src="../react/babel.min.js"></script>
+  <!-- 添加React的依赖 -->
+  <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
 
   <!-- 2.编写React代码 -->
   <script type="text/babel">
+
+    // 创建组件
     class App extends React.Component {
       constructor() {
-        super();
+        super()
 
         this.state = {
-          message: "Hello World",
+          message: 'Hello World',
           movies: ["大话西游", "盗梦空间", "星际穿越", "流浪地球"]
         }
       }
-
       render() {
-        const liArray = [];
-        for (let movie of this.state.movies) {
-          liArray.push(<li>{movie}</li>);
-        }
-
         return (
           <div>
-            <h2>电影列表1</h2>
-            <ul>
-              {liArray}
-            </ul>
-
-            <h2>电影列表2</h2>
+            <h2>电影列表</h2>
             <ul>
               {
                 this.state.movies.map((item) => {
@@ -52,8 +45,8 @@
       }
     }
 
-    ReactDOM.render(<App/>, document.getElementById("app"));
+    ReactDOM.render(<App />, document.getElementById("app"))
   </script>
-
 </body>
+
 </html>
