@@ -253,3 +253,6 @@ class Demo extends React.Component {
 # React调试插件
 
 React Developer Tools 插件: [chrome.google.com/webstore/de…](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi)
+
+# 为什么使用虚拟DOM
+
