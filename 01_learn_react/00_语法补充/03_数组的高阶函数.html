@@ -1,17 +1,44 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>03_数组的高阶函数</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
 </head>
 <body>
-		<script type="text/javascript">
-				const names = ["大话西游", "盗梦空间", "星际穿越", "流浪地球"]
+  
+  <script>
+    const names = ["abc", "cba", "nba", "mba"];
+    /**
+     * 回调函数有三个参数:
+     *  参数一: 执行时的对应元素
+     *  参数二: 对应的下标值
+     *  参数三: 完整的数组对象
+     */
+    const newNames = names.map((item, index, arr) => {
+      return item + "000"
+    })
+    console.log(newNames);
 
-				names.map((item, index, arr) => {
-					return item + "000"
-				})
-		</script>
+    // const newNames1 = names.forEach((item) => {
+    //   return item + "111";
+    // })
+
+    // console.log(newNames1);
+
+    const nums = [110, 123, 50, 32, 55, 10, 8, 333];
+    const newNums = nums.filter((item, index, arr) => {
+      return item >= 50;
+    })
+    console.log(newNums);
+
+    const newNums2 = nums.filter(item => {
+      return item % 2 === 0;
+    })
+    console.log(newNums2);
+
+    console.log(nums.slice(-2));
+    
+  </script>
 </body>
 </html>

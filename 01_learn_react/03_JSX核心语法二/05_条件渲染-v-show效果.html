@@ -4,10 +4,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>06_jsx嵌入表达式</title>
+  <title>05_条件渲染-v-show效果</title>
 </head>
 
 <body>
+
   <div id="app"></div>
 
   <script src="../react/react.development.js"></script>
@@ -20,32 +21,25 @@
         super(props);
 
         this.state = {
-          firstname: "kobe",
-          lastname: "bryant",
-          isLogin: false
+          isLogin: true
         }
       }
 
       render() {
-        const { firstname, lastname, isLogin } = this.state;
-
+        const { isLogin } = this.state;
+        const titleDisplayValue = isLogin ? "block" : "none";
         return (
           <div>
-            {/*1.运算符表达式*/}
-            <h2>{firstname + " " + lastname}</h2>
-            <h2>{20 * 50}</h2>
-
-            {/*2.三元表达式*/}
-            <h2>{isLogin ? "欢迎回来~" : "请先登录~"}</h2>
-
-            {/*3.进行函数调用*/}
-            <h2>{this.getFullName()}</h2>
+            <button onClick={e => this.loginClick()}>{isLogin ? "退出" : "登录"}</button>
+            <h2 style={{ display: titleDisplayValue }}>你好啊, zytqyb</h2>
           </div>
         )
       }
 
-      getFullName() {
-        return this.state.firstname + " " + this.state.lastname;
+      loginClick() {
+        this.setState({
+          isLogin: !this.state.isLogin
+        })
       }
     }
 
