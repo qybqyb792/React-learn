@@ -66,7 +66,7 @@ export default class App extends Component {
 	}
 
 	// 组件发生更新
-	componentDidUpdate() {
+	componentDidUpdate(prevProps, prevState, snapshot) {
 		console.log("执行了组建的componentDidUpdate方法");
 	}
 }

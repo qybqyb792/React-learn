@@ -1,6 +1,7 @@
 .DS_Store
 node_modules/
 02_learn_scaffold/node_modules/
+04_learn_component/node_modules/
 dist/
 npm-debug.log*
 yarn-debug.log*
