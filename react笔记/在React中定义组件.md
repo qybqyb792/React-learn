@@ -116,7 +116,113 @@ export default function App() {
 
 - 另外，React中还提供了一些过期的生命周期函数，这些函数已经不推荐使用。
 
-  >可以参考官网：[React官网生命周期](https://zh-hans.reactjs.org/docs/react-component.html)
+  可以参考官网：[React官网生命周期](https://zh-hans.reactjs.org/docs/react-component.html)
 
-  
+# 组件之间的通信
+
+## 父子组件的通信(props)
+
+### 类组件
+
+```react
+import React, { Component } from 'react'
+
+class ChildCpn extends Component {
+
+
+	render() {
+		const { name, age, height } = this.props
+		return (
+			<div>
+				<h2>子组件展示数据: {`${name} ${age} ${height}`}</h2>
+			</div>
+		)
+	}
+}
+
+export default class App extends Component {
+	render() {
+		return (
+			<div>
+				<ChildCpn name="zytqyb" age="18" height="1.70" />
+			</div>
+		)
+	}
+}
+
+```
+
+### 函数式组件
+
+```react
+import React, { Component } from 'react'
+
+function ChildCpn(props) {
+	const { name, age, height } = props
+
+	return (
+		<h2>{`${name} ${age} ${height}`}</h2>
+	)
+}
+
+export default class App extends Component {
+	render() {
+		return (
+			<div>
+				<ChildCpn name="zytqyb" age="18" height="1.70" />
+				<ChildCpn name="qyb" age="18" height="1.70" />
+			</div>
+		)
+	}
+}
+
+```
+
+## 函数组件props属性验证
+
+需要引入prop-types
+
+```javascript
+ChildCpn.propTypes = {
+	name: PropTypes.string.isRequired,
+	age: PropTypes.number,
+	height: PropTypes.number,
+	names: PropTypes.array
+}
+```
+
+## 函数组件props设置默认值
+
+```javascript
+ChildCpn.defaultProps = {
+	name: 'zytqyb',
+	age: 30,
+	height: 1.90,
+	names: ["aaa", "bbb"]
+}
+```
+
+## 类组件props属性验证
+
+```react
+class childCpn2 extends Component {
+
+	static propTypes = {
+		
+	}
+
+}
+```
+
+## 类组件props设置默认值
+
+```react
+class childCpn2 extends Component {
+
+	static defaultProps = {
+		
+	}
+
+}
+```
 
