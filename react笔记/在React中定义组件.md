@@ -120,9 +120,11 @@ export default function App() {
 
 # 组件之间的通信
 
-## 父子组件的通信(props)
+## 父子组件的通信
 
-### 类组件
+### 父传子
+
+#### 类组件
 
 ```react
 import React, { Component } from 'react'
@@ -152,7 +154,7 @@ export default class App extends Component {
 
 ```
 
-### 函数式组件
+#### 函数式组件
 
 ```react
 import React, { Component } from 'react'
@@ -178,7 +180,7 @@ export default class App extends Component {
 
 ```
 
-## 函数组件props属性验证
+#### 函数组件props属性验证
 
 需要引入prop-types
 
@@ -191,7 +193,7 @@ ChildCpn.propTypes = {
 }
 ```
 
-## 函数组件props设置默认值
+#### 函数组件props设置默认值
 
 ```javascript
 ChildCpn.defaultProps = {
@@ -202,7 +204,7 @@ ChildCpn.defaultProps = {
 }
 ```
 
-## 类组件props属性验证
+#### 类组件props属性验证
 
 ```react
 class childCpn2 extends Component {
@@ -214,7 +216,7 @@ class childCpn2 extends Component {
 }
 ```
 
-## 类组件props设置默认值
+#### 类组件props设置默认值
 
 ```react
 class childCpn2 extends Component {
@@ -224,5 +226,48 @@ class childCpn2 extends Component {
 	}
 
 }
+```
+
+### 子传父
+
+```react
+import React, { Component } from 'react'
+
+class CounterButton extends Component {
+	render() {
+		const { onClick } = this.props
+		return (
+			<button onClick={onClick}>+1</button>
+		)
+	}
+}
+
+export default class App extends Component {
+
+	constructor(props) {
+		super(props)
+
+		this.state = {
+			counter: 0
+		}
+	}
+
+	render() {
+		return (
+			<div>
+				<h2>当前计数: {this.state.counter}</h2>
+				<button onClick={e => this.increment()}>+</button>
+				<CounterButton onClick={this.increment} />
+			</div>
+		)
+	}
+
+	increment = () => {
+		this.setState({
+			counter: this.state.counter + 1
+		})
+	}
+}
+
 ```
 
