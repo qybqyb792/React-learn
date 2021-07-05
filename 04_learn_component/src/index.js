@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import App from './03_组件间的通信/05_子传父通信-函数传递';
-
+import App from './04_组件通信案例/App';
+import './04_组件通信案例/style.css'
 
 ReactDOM.render(
   <App />,
