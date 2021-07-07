@@ -155,3 +155,36 @@ useEffect(() => {
   - 当组件上层最近的 <MyContext.Provider> 更新时，该 Hook 会触发重新渲染，并使用最新传递给 MyContext provider  的 context value 值。  
 
 #   useReducer  
+
+- 很多人看到useReducer的第一反应应该是redux的某个替代品，其实并不是。  
+
+- useReducer仅仅是useState的一种替代方案：  
+
+  - 在某些场景下，如果state的处理逻辑比较复杂，我们可以通过useReducer来对其进行拆分；
+
+  - 或者这次修改的state需要依赖之前的state时，也可以使用；  
+
+    ![](https://blog.bsat1314.cn//file/img/image-20210707100623513.png)
+
+- 数据是不会共享的，它们只是使用了相同的counterReducer的函数而已。  
+
+- 所以，useReducer只是useState的一种替代品，并不能替代Redux。  
+
+# useCallback  
+
+- useCallback实际的目的是为了进行性能的优化。  
+
+- 如何进行性能的优化呢？  
+
+  - useCallback会返回一个函数的 memoized（记忆的） 值；
+
+  - 在依赖不变的情况下，多次定义的时候，返回的值是相同的；  
+
+    ![image-20210707102902187](https://blog.bsat1314.cn//file/img/image-20210707102902187.png)
+
+- 案例  
+
+  - 案例一：使用useCallback和不使用useCallback定义一个函数是否会带来性能的优化；
+  - 案例二：使用useCallback和不使用useCallback定义一个函数传递给子组件是否会带来性能的优化；  
+
+- 通常使用useCallback的目的是不希望子组件进行多次渲染，并不是为了函数进行缓存；  

@@ -13,8 +13,11 @@ import React, { createContext, useState } from 'react'
 
 // import ContextHoookDemo from './04_useContext使用/01_useContext的使用'
 
-import Home from './05_useReducer使用/Home'
-import Profile from './05_useReducer使用/profile'
+// import Home from './05_useReducer使用/Home'
+// import Profile from './05_useReducer使用/profile'
+
+// import CallbackHookDemo01 from './06_useCallback使用/01_useCallback不能进行的性能优化'
+import CallbackHookDemo02 from './06_useCallback使用/02_useCallback进行的性能优化'
 
 export const UserContext = createContext()
 export const ThemeContext = createContext()
@@ -48,11 +51,13 @@ export default function App() {
         </ThemeContext.Provider>
       </UserContext.Provider> */}
 
-			{/* 5.useReducer */}
-			<Home/>
-			<Profile />
+      {/* 5.useReducer */}
+      {/* <Home/>
+			<Profile /> */}
+
+      {/* 6.useCallback */}
+      {/* <CallbackHookDemo01 /> */}
+      <CallbackHookDemo02 />
     </div>
   )
 }
-
-
