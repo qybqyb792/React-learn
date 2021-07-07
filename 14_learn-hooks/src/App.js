@@ -20,7 +20,10 @@ import React, { createContext, useState } from 'react'
 // import CallbackHookDemo02 from './06_useCallback使用/02_useCallback进行的性能优化'
 
 // import MemoHookDemo01 from './07_useMemo使用/01_useMemo复杂计算的应用'
-import MemoHookDemo02 from './07_useMemo使用/02_useMemo传入子组件引用类型'
+// import MemoHookDemo02 from './07_useMemo使用/02_useMemo传入子组件引用类型'
+
+// import RefHookDemo01 from './08_useRef使用/01_useRef引用DOM'
+import RefHookDemo02 from './08_useRef使用/02_useRef引用其他数据'
 
 export const UserContext = createContext()
 export const ThemeContext = createContext()
@@ -62,9 +65,13 @@ export default function App() {
       {/* <CallbackHookDemo01 /> */}
       {/* <CallbackHookDemo02 /> */}
 
-			{/* 7.useMemo */}
-			{/* <MemoHookDemo01/> */}
-			<MemoHookDemo02 />
+      {/* 7.useMemo */}
+      {/* <MemoHookDemo01/> */}
+      {/* <MemoHookDemo02 /> */}
+
+      {/* 8.useRef */}
+      {/* <RefHookDemo01 /> */}
+      <RefHookDemo02 />
     </div>
   )
 }
