@@ -1,4 +1,4 @@
-# useState
+# useState的使用
 
 > useState是react自带的一个hook函数，它的作用是用来声明状态变量。
 
@@ -27,7 +27,7 @@ function createRows(props) {
 }
 ```
 
-# useEffect
+# useEffect的使用
 
 > 利用useEffect函数代替一些生命周期；
 
@@ -46,6 +46,56 @@ function createRows(props) {
 4. useEffect 实现 componentWillUnmount生命周期函数
    - 当第二个参数传空数组[]时，就是当组件将被销毁时才进行解绑，这也就实现了componentWillUnmount的生命周期函数
 5. 开发者通过 useEffect 的第二个参数告诉 React 用到了哪些外部变量。
+
+##   需要清除Effect  
+
+-  在class组件的编写过程中，某些副作用的代码，我们需要在componentWillUnmount中进行清除：
+
+  - 比如我们之前的事件总线或Redux中手动调用subscribe；  
+  -  都需要在componentWillUnmount有对应的取消订阅；  
+  -   Effect Hook通过什么方式来模拟componentWillUnmount呢？  
+
+-  useEffect传入的回调函数A本身可以有一个返回值，这个返回值是另外一个回调函数B：  
+
+  ```jsx
+  type EffectCallback = () => (void | (() => void | undefined));  
+  ```
+
+  
+
+-  为什么要在 effect 中返回一个函数？  
+
+  -   这是 effect 可选的清除机制。每个 effect 都可以返回一个清除函数；  
+  -  如此可以将添加和移除订阅的逻辑放在一起；  
+  -  它们都属于 effect 的一部分；  
+
+-  React 何时清除 effect？  
+
+  -  React 会在组件更新和卸载的时候执行清除操作；  
+  -  正如之前学到的，effect 在每次渲染的时候都会执行；  
+
+##   使用多个Effect  
+
+- 使用Hook的其中一个目的就是解决class中生命周期经常将很多的逻辑放在一起的问题：  
+  - 比如网络请求、事件监听、手动修改DOM，这些往往都会放在componentDidMount中；  
+- 使用Effect Hook，我们可以将它们分离到不同的useEffect中：
+  - 代码不再给出  
+- Hook 允许我们按照代码的用途分离它们， 而不是像生命周期函数那样：
+  - React 将按照 effect 声明的顺序依次调用组件中的每一个 effect；  
+
+## Effect性能优化
+
+- 默认情况下，useEffect的回调函数会在每次渲染时都重新执行，但是这会导致两个问题：  
+  - 某些代码我们只是希望执行一次即可，类似于componentDidMount和componentWillUnmount中完成的事情；（比如网  络请求、订阅和取消订阅）；  
+  - 另外，多次执行也会导致一定的性能问题；  
+- 我们如何决定useEffect在什么时候应该执行和什么时候不应该执行呢？ 
+  - useEffect实际上有两个参数：  
+  - 参数一：执行的回调函数；  
+  - 参数二：该useEffect在哪些state发生变化时，才重新执行；（受谁的影响）  
+- 案例练习：  
+  - 受count影响的Effect；  
+- 但是，如果一个函数我们不希望依赖任何的内容时，也可以传入一个空的数组 []：  
+  - 那么这里的两个回调函数分别对应的就是componentDidMount和componentWillUnmount生命周期函数了；
 
 ## 不同值的参数
 
@@ -94,3 +144,14 @@ useEffect(() => {
 
 传入第二个参数，有2个值的数组，会比较每一个值，有一个不相等就执行
 
+# useContext的使用  
+
+- 在之前的开发中，我们要在组件中使用共享的Context有两种方式：  
+  - 类组件可以通过 类名.contextType = MyContext方式，在类中获取context； 
+  - 多个Context或者在函数式组件中通过 MyContext.Consumer 方式共享context；  
+- 但是多个Context共享时的方式会存在大量的嵌套：  
+  - Context Hook允许我们通过Hook来直接获取某个Context的值； 
+- 注意事项：  
+  - 当组件上层最近的 <MyContext.Provider> 更新时，该 Hook 会触发重新渲染，并使用最新传递给 MyContext provider  的 context value 值。  
+
+#   useReducer  
