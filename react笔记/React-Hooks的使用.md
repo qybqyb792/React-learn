@@ -232,3 +232,12 @@ useEffect(() => {
   - 比如我调用了 focus函数，甚至可以调用 printHello函数；  
 
 # useLayoutEffect
+
+- useLayoutEffect看起来和useEffect非常的相似，事实上他们也只有一点区别而已：
+  - useEffect会在渲染的内容更新到DOM上后执行，不会阻塞DOM的更新；
+  - useLayoutEffect会在渲染的内容更新到DOM上之前执行，会阻塞DOM的更新；  
+- 如果我们希望在某些操作发生之后再更新DOM，那么应该将这个操作放到useLayoutEffect。
+- 案例： useEffect和useLayoutEffect的对比  
+
+![image-20210707145511199](C:/Users/14351/AppData/Roaming/Typora/typora-user-images/image-20210707145511199.png)
+
