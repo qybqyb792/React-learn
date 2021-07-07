@@ -1,13 +1,12 @@
-import React, { useCallback, useState, memo } from 'react'
+import React, { useCallback, useState, memo, useMemo } from 'react'
 
 const HYButton = memo((props) => {
-  console.log(props.title, "重新渲染");
+  console.log(props.title, '重新渲染')
   return <button onClick={props.increment}>HY+1</button>
 })
 
 export default function CallbackHookDemo02() {
-
-  console.log("CallbackHookDemo02重新渲染");
+  console.log('CallbackHookDemo02重新渲染')
 
   const [count, setCount] = useState(0)
 
@@ -23,6 +22,13 @@ export default function CallbackHookDemo02() {
     setCount(count + 1)
   }, [count])
 
+  const increment3 = useMemo(() => {
+    return () => {
+      console.log('increment2')
+      setCount(count + 1)
+    }
+  }, [count])
+
   return (
     <div>
       <h2>CallbackHookDemo02</h2>
@@ -32,8 +38,7 @@ export default function CallbackHookDemo02() {
       <HYButton title="btn1" increment1={increment1} />
       <HYButton title="btn2" increment2={increment2} />
 
-
-      <button onClick={e => setShow(!show)} >show切换</button>
+      <button onClick={(e) => setShow(!show)}>show切换</button>
     </div>
   )
 }

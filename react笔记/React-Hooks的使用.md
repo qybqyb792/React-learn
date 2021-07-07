@@ -154,7 +154,7 @@ useEffect(() => {
 - 注意事项：  
   - 当组件上层最近的 <MyContext.Provider> 更新时，该 Hook 会触发重新渲染，并使用最新传递给 MyContext provider  的 context value 值。  
 
-#   useReducer  
+#   useReducer的使用
 
 - 很多人看到useReducer的第一反应应该是redux的某个替代品，其实并不是。  
 
@@ -170,7 +170,7 @@ useEffect(() => {
 
 - 所以，useReducer只是useState的一种替代品，并不能替代Redux。  
 
-# useCallback  
+# useCallback的使用 
 
 - useCallback实际的目的是为了进行性能的优化。  
 
@@ -188,3 +188,31 @@ useEffect(() => {
   - 案例二：使用useCallback和不使用useCallback定义一个函数传递给子组件是否会带来性能的优化；  
 
 - 通常使用useCallback的目的是不希望子组件进行多次渲染，并不是为了函数进行缓存；  
+
+# useMemo的使用
+
+- useMemo实际的目的也是为了进行性能的优化。  
+- 如何进行性能的优化呢？  
+  - useMemo返回的也是一个 memoized（记忆的） 值；
+  - 在依赖不变的情况下，多次定义的时候，返回的值是相同的；  
+- ![image-20210707110525537](https://blog.bsat1314.cn//file/img/image-20210707110525537.png)
+- 案例：  
+  - 案例一：进行大量的计算操作，是否有必须要每次渲染时都重新计算；  
+  - 案例二：对子组件传递相同内容的对象时，使用useMemo进行性能的优化
+
+# useRef使用
+
+- useRef返回一个ref对象，返回的ref对象再组件的整个生命周期保持不变。  
+
+- 最常用的ref是两种用法：  
+
+  - 用法一：引入DOM（或者组件，但是需要是class组件）元素；
+  - 用法二：保存一个数据，这个对象在整个生命周期中可以保存不变；  
+
+  ![image-20210707110639484](https://blog.bsat1314.cn//file/img/image-20210707110639484.png)
+
+- 案例：  
+
+  - 案例一：引用DOM  
+  - 案例二：使用ref保存上一次的某一个值
+
