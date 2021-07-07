@@ -217,3 +217,18 @@ useEffect(() => {
   - 案例二：使用ref保存上一次的某一个值
 
 #   useImperativeHandle使用
+
+- useImperativeHandle并不是特别好理解，我们一点点来学习。  
+- 我们先来回顾一下ref和forwardRef结合使用：
+  - 通过forwardRef可以将ref转发到子组件；  
+  - 子组件拿到父组件中创建的ref，绑定到自己的某一个元素中；  
+- forwardRef的做法本身没有什么问题，但是我们是将子组件的DOM直接暴露给了父组件：
+  - 直接暴露给父组件带来的问题是某些情况的不可控；  
+  - 父组件可以拿到DOM后进行任意的操作；  
+  - 但是，事实上在上面的案例中，我们只是希望父组件可以操作的focus，其他并不希望它随意操作；  
+- 通过useImperativeHandle可以值暴露固定的操作：  
+  - 通过useImperativeHandle的Hook，将传入的ref和useImperativeHandle第二个参数返回的对象绑定到了一起；
+  - 所以在父组件中，使用 inputRef.current时，实际上使用的是返回的对象；
+  - 比如我调用了 focus函数，甚至可以调用 printHello函数；  
+
+# useLayoutEffect
