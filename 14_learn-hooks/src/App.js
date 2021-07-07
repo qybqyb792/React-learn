@@ -28,6 +28,9 @@ import React, { createContext, useState } from 'react'
 // import ForwardedRefDemo from './09_useImperativeHandle/01_回顾forwardRef的用法'
 // import UseImperativeHandleHookDemo from './09_useImperativeHandle/02_useImperativeHandle用法'
 
+// import EffectCounterDemo from './10_useLayoutEffect使用/01_useEffect的count修改'
+import UseLayoutEffectCounterDemo from './10_useLayoutEffect使用/02_useLayoutEffect的count修改'
+
 export const UserContext = createContext()
 export const ThemeContext = createContext()
 
@@ -80,8 +83,9 @@ export default function App() {
       {/* <ForwardedRefDemo /> */}
       {/* <UseImperativeHandleHookDemo /> */}
 
-
-      
+      {/* 10.useLayoutEffect */}
+      {/* <EffectCounterDemo /> */}
+      <UseLayoutEffectCounterDemo />
 
       <button onClick={(e) => setShow(!show)}>切换</button>
     </div>
