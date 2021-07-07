@@ -23,7 +23,10 @@ import React, { createContext, useState } from 'react'
 // import MemoHookDemo02 from './07_useMemo使用/02_useMemo传入子组件引用类型'
 
 // import RefHookDemo01 from './08_useRef使用/01_useRef引用DOM'
-import RefHookDemo02 from './08_useRef使用/02_useRef引用其他数据'
+// import RefHookDemo02 from './08_useRef使用/02_useRef引用其他数据'
+
+// import ForwardedRefDemo from './09_useImperativeHandle/01_回顾forwardRef的用法'
+// import UseImperativeHandleHookDemo from './09_useImperativeHandle/02_useImperativeHandle用法'
 
 export const UserContext = createContext()
 export const ThemeContext = createContext()
@@ -46,7 +49,7 @@ export default function App() {
       {/* <HookCounterChangeTitle/> */}
       {/* {show && <EffectHookCancelDemo />}
 
-      <button onClick={(e) => setShow(!show)}>切换</button>
+      
 
       <MultiEffectHookDemo /> */}
 
@@ -71,7 +74,16 @@ export default function App() {
 
       {/* 8.useRef */}
       {/* <RefHookDemo01 /> */}
-      <RefHookDemo02 />
+      {/* <RefHookDemo02 /> */}
+
+      {/* 9.useImperotvieHandle */}
+      {/* <ForwardedRefDemo /> */}
+      {/* <UseImperativeHandleHookDemo /> */}
+
+
+      
+
+      <button onClick={(e) => setShow(!show)}>切换</button>
     </div>
   )
 }
